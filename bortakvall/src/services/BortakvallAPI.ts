@@ -4,6 +4,7 @@ import axios from "axios";
 const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
 //const ORDER_BASEURL = import.meta.env.VITE_ORDER_BASE_URL;
 
+
 const apiInstance = axios.create({
     baseURL: API_BASEURL,
     timeout: 5000,
@@ -22,13 +23,24 @@ const orderInstance = axios.create({
 });
 */
 
+
 export async function getProducts () {
-    const response = await apiInstance.get('')
+    const response = await apiInstance.get('/products')
     
     console.log(response.data);
 
     return response.data.data;
 };
+
+
+export async function getProduct(productId: number) {
+    const response = await apiInstance.get(`/products/${productId}`)
+    
+    console.log(response.data);
+
+    return response.data.data;
+};
+
 
 /*
 response   HTTP wrapper  
