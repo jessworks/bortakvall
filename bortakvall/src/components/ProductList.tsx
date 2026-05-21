@@ -29,13 +29,14 @@ export const ProductList = () => {
             {selectedProduct && (
                 <ProductCard product={selectedProduct} />
             )}
-            
+
             <ul>
                 {products?.map(product => (
                     <li key={product.id}>
                         <h2>{product.name}</h2>
                         <span>{product.price} kr</span>
-                        <button onClick={() => openProductCard(product.id)}>Läs mer</button>                        
+                        <button onClick={() => openProductCard(product.id)}>Läs mer</button>
+                        <button>lägg i varukorg</button>                       
                     </li>
                 ))}               
             </ul>

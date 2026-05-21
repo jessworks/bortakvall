@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
+const API_BASEURL = import.meta.env.VITE_API_BASE_URL; //no type coverage --> where & how
 //const ORDER_BASEURL = import.meta.env.VITE_ORDER_BASE_URL;
 
 
@@ -27,7 +27,7 @@ const orderInstance = axios.create({
 export async function getProducts () {
     const response = await apiInstance.get('/products')
     
-    console.log(response.data);
+    //console.log(response.data);
 
     return response.data.data;
 };
@@ -36,7 +36,7 @@ export async function getProducts () {
 export async function getProduct(productId: number) {
     const response = await apiInstance.get(`/products/${productId}`)
     
-    console.log(response.data);
+    //console.log(response.data);
 
     return response.data.data;
 };

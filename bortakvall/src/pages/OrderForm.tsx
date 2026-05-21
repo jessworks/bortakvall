@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { CustomerDetails } from "../components/CustomerDetails"
 
 
 export const OrderForm = () => {
@@ -6,11 +7,10 @@ export const OrderForm = () => {
     return (
         <>
             <h2>OrderForm</h2>
-            <Link to='/'>Home</Link>
             <span> printCart </span>
-            <span> customerDetails </span>
+            <CustomerDetails />
             <span> orderButton </span>
-            <span> homeButton </span>
+            <Link to='/'>Home</Link>
         </>
     )
 };
