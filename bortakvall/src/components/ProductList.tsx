@@ -43,7 +43,6 @@ export const ProductList = () => {
                     </li>
                 ))}               
             </ul>
-            
         </>
     )
 };
