@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
-import type { ProductDetails, Product } from "../types/ProductApi.types";
+import { useEffect, useState, useContext } from "react";
+import { type ProductDetails, type Product } from "../types/ProductApi.types";
 import { getProduct, getProducts } from "../services/BortakvallAPI";
 import { ProductCard } from "./ProductCard";
+import { CartContext } from "../context/cartContext";
 
 
 export const ProductList = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProduct, setSelectedProduct] = useState<ProductDetails>();
+    const { addToCart } = useContext(CartContext)!; // inte idealt, men för proof of concept i denna stund
+    
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -22,7 +25,7 @@ export const ProductList = () => {
         const data = await getProduct(id);
         setSelectedProduct(data);
     }
-    
+
 
     return (
         <>
@@ -36,7 +39,7 @@ export const ProductList = () => {
                         <h2>{product.name}</h2>
                         <span>{product.price} kr</span>
                         <button onClick={() => openProductCard(product.id)}>Läs mer</button>
-                        <button>lägg i varukorg</button>                       
+                        <button onClick={() => addToCart(product.id)}>lägg i varukorg</button>                       
                     </li>
                 ))}               
             </ul>

@@ -93,7 +93,6 @@ export const CustomerDetails = () => {
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    required
                 />               
 
                 <label htmlFor="email">E-post</label>

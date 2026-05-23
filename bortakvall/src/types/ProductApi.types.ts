@@ -17,4 +17,3 @@ export interface ProductDetails extends Product {
         name: string;
     }[];
 };
-

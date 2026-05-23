@@ -9,7 +9,6 @@ export const OrderForm = () => {
             <h2>OrderForm</h2>
             <span> printCart </span>
             <CustomerDetails />
-            <span> orderButton </span>
             <Link to='/'>Home</Link>
         </>
     )
