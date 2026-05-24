@@ -24,16 +24,24 @@ export const CartContextProvider = ({children}: Props) => {
 
     const addToCart = (itemId: number) => {
         setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }))
-    }
+    };
 
     const removeFromCart = (itemId: number) => {
         setCartItems((prev) => ({ ...prev, [itemId]: Math.max((prev[itemId]) - 1, 0)}))
     };
 
+
+    /*
+    const deleteFromCart = (itemId: number) => {
+        setCartItems((prev) => ({ ...prev, [itemId]: }))
+    };
+    */
+
     const contextValue = {
         cartItems,
         addToCart,
         removeFromCart,
+        //deleteFromCart,
     };
 
     console.log(cartItems);

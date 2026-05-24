@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Product } from "../types/ProductApi.types";
+import { type Product } from "../types/ProductApi.types";
 
 
 const API_BASEURL = import.meta.env.VITE_API_BASE_URL; //no type coverage --> where & how

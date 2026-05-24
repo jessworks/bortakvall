@@ -1,6 +1,3 @@
-//  sum total
-//  ProductList -> id for products 'lägg i varukorgen'/carry the number of products (ls?)
-
 import { useState, useEffect, useContext } from "react";
 import { type Product } from "../types/ProductApi.types";
 import { getProducts } from "../services/BortakvallAPI";
@@ -18,7 +15,11 @@ export const ShoppingCart = () => {
             }
            
             loadProducts();
-        },[]);
+    },[]);
+    
+    const sumTotalCart = products.reduce((sum, product) => {
+        return sum + product.price  * (cartItems[product.id] || 0)
+    },0);
 
 
     return (
@@ -32,11 +33,10 @@ export const ShoppingCart = () => {
                             <li key={product.id}>
                                 <h2>{product.name}</h2>
                                 <span>{product.price} kr</span>
-                                <span>{cartItems[product.id]} st</span>
-
+                                
                                 <button onClick={() => addToCart(product.id)}>+</button>
-                                <button onClick={() => removeFromCart(product.id)}>-</button>
-                                <button>delete</button>                  
+                                <span>{cartItems[product.id]} st</span>
+                                <button onClick={() => removeFromCart(product.id)}>-</button>                  
                             </li>
                         )
                     }
@@ -44,6 +44,7 @@ export const ShoppingCart = () => {
                 })}               
             </ul>
             
+            <span>{sumTotalCart} kr</span>
             <button>till kassa</button>
         </>
     )
