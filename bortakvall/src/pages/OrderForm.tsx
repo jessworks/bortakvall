@@ -9,7 +9,7 @@ export const OrderForm = () => {
             <h2>OrderForm</h2>
             <span> printCart </span>
             <CustomerDetails />
-            <Link to='/'>Home</Link>
+            <Link to='/'>Home (fortsätt handla)</Link>
         </>
     )
 };

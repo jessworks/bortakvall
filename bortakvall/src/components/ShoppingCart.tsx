@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { type Product } from "../types/ProductApi.types";
-import { getProducts } from "../services/BortakvallAPI";
+import { getProducts, IMAGE_BASEURL } from "../services/BortakvallAPI";
 import { CartContext } from "../context/cartContext";
 
 
@@ -31,6 +31,7 @@ export const ShoppingCart = () => {
                     if (cartItems[product.id] > 0) {
                         return (
                             <li key={product.id}>
+                                <img src={`${IMAGE_BASEURL}${product.images.thumbnail}`} alt={product.name} />
                                 <h2>{product.name}</h2>
                                 <span>{product.price} kr</span>
                                 

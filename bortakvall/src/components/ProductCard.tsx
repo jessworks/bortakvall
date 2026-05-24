@@ -1,3 +1,4 @@
+import { IMAGE_BASEURL } from "../services/BortakvallAPI";
 import type { ProductDetails } from "../types/ProductApi.types";
 
 
@@ -12,6 +13,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <span>
                 {product && (
                     <li key={product.id}>
+                        <img src={`${IMAGE_BASEURL}${product.images.large}`} alt={product.name} />
                         <h2>{product.name}</h2>
 
                         {product.tags.map((tag) => (

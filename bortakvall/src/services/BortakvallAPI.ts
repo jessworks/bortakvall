@@ -2,7 +2,9 @@ import axios from "axios";
 import { type Product } from "../types/ProductApi.types";
 
 
-const API_BASEURL = import.meta.env.VITE_API_BASE_URL; //no type coverage --> where & how
+const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
+export const IMAGE_BASEURL = import.meta.env.VITE_IMAGE_BASE_URL;
+                                             
 //const ORDER_BASEURL = import.meta.env.VITE_ORDER_BASE_URL;
 
 
@@ -40,7 +42,7 @@ export async function getProducts () {
 
 
 export async function getProduct(productId: number) {
-    const response = await apiInstance.get<ApiResponse<Product[]>>(`/products/${productId}`)
+    const response = await apiInstance.get<ApiResponse<Product>>(`/products/${productId}`)
     
     //(`/products/${productId}`)
     

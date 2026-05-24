@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { type ProductDetails, type Product } from "../types/ProductApi.types";
-import { getProduct, getProducts } from "../services/BortakvallAPI";
+import { getProduct, getProducts, IMAGE_BASEURL } from "../services/BortakvallAPI";
 import { ProductCard } from "./ProductCard";
 import { CartContext } from "../context/cartContext";
 
@@ -36,6 +36,7 @@ export const ProductList = () => {
             <ul>
                 {products?.map(product => (
                     <li key={product.id}>
+                        <img src={`${IMAGE_BASEURL}${product.images.thumbnail}`} alt={product.name} />
                         <h2>{product.name}</h2>
                         <span>{product.price} kr</span>
                         <button onClick={() => openProductCard(product.id)}>Läs mer</button>
