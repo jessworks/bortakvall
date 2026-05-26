@@ -35,12 +35,30 @@ export const ProductList = () => {
 
             <ul>
                 {products?.map(product => (
-                    <li key={product.id}>
-                        <img src={`${IMAGE_BASEURL}${product.images.thumbnail}`} alt={product.name} />
-                        <h2>{product.name}</h2>
-                        <span>{product.price} kr</span>
-                        <button onClick={() => openProductCard(product.id)}>Läs mer</button>
-                        <button onClick={() => addToCart(product.id)}>lägg i varukorg</button>                       
+                    <li className="product-list-li" key={product.id}>
+                        <img 
+                            className="product-list-img" 
+                            src={`${IMAGE_BASEURL}${product.images.thumbnail}`} alt={product.name} 
+                        />
+                        <div className="product-list-text">
+                            <h2 className="product-list-name">{product.name}</h2>
+                            <span className="product-list-price">{product.price} kr</span>
+                            <div product-list-btns>
+                                <button 
+                                    className="product-list-open-card" 
+                                    onClick={() => openProductCard(product.id)}
+                                >
+                                    Läs mer
+                                </button>
+                                <button 
+                                    className="product-list-add" 
+                                    onClick={() => addToCart(product.id)}
+                                    >  
+                                        lägg i varukorg
+                                    </button>     
+                            </div>      
+                        </div>
+                                
                     </li>
                 ))}               
             </ul>
