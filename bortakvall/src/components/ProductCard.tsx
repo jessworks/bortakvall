@@ -15,12 +15,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     <li key={product.id}>
                         <img src={`${IMAGE_BASEURL}${product.images.large}`} alt={product.name} />
                         <h2>{product.name}</h2>
+                        <span>{product.price} kr</span>
 
                         {product.tags.map((tag) => (
-                            <span key={tag.id}>{tag.name}</span>
+                            <span key={tag.id}>{tag.name} </span>
                         ))}
-
-                        <span>{product.price} kr</span>
+                       
+                        <p>{product.description}</p>
                     </li>
                 )}               
             </span>

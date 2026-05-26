@@ -36,9 +36,9 @@ export const ShoppingCart = () => {
                                 <h2>{product.name}</h2>
                                 <span>{product.price} kr</span>
                                 
-                                <button onClick={() => addToCart(product.id)}>+</button>
+                                <button onClick={() => removeFromCart(product.id)}>-</button>
                                 <span>{cartItems[product.id]} st</span>
-                                <button onClick={() => removeFromCart(product.id)}>-</button>                  
+                                <button onClick={() => addToCart(product.id)}>+</button>                                      
                             </li>
                         )
                     }

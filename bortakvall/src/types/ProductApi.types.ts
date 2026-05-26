@@ -15,5 +15,6 @@ export interface ProductDetails extends Product {
     tags: {
         id: number;
         name: string;
+        description: string;
     }[];
 };
