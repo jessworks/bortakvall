@@ -1,7 +1,10 @@
 import axios from "axios";
+import { type Product } from "../types/ProductApi.types";
 
 
-const API_BASEURL = import.meta.env.VITE_API_BASE_URL; //no type coverage --> where & how
+const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
+export const IMAGE_BASEURL = import.meta.env.VITE_IMAGE_BASE_URL;
+                                             
 //const ORDER_BASEURL = import.meta.env.VITE_ORDER_BASE_URL;
 
 
@@ -13,6 +16,7 @@ const apiInstance = axios.create({
     },
 });
 
+
 /*
 const orderInstance = axios.create({
     baseURL: ORDER_BASEURL,
@@ -23,18 +27,24 @@ const orderInstance = axios.create({
 });
 */
 
+type ApiResponse<T> = {
+    data: T;
+};
+
 
 export async function getProducts () {
-    const response = await apiInstance.get('/products')
+    const response = await apiInstance.get<ApiResponse<Product[]>>("/products")
     
-    //console.log(response.data);
+    console.log(response.data);
 
     return response.data.data;
 };
 
 
 export async function getProduct(productId: number) {
-    const response = await apiInstance.get(`/products/${productId}`)
+    const response = await apiInstance.get<ApiResponse<Product>>(`/products/${productId}`)
+    
+    //(`/products/${productId}`)
     
     //console.log(response.data);
 

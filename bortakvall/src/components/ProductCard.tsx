@@ -1,3 +1,4 @@
+import { IMAGE_BASEURL } from "../services/BortakvallAPI";
 import type { ProductDetails } from "../types/ProductApi.types";
 
 
@@ -9,19 +10,29 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
     return (
         <>
-            <span>
+            <ul>
                 {product && (
-                    <li key={product.id}>
-                        <h2>{product.name}</h2>
-
+                    <li className="product-card-li" key={product.id}>
+                        <img 
+                            className="product-card-img" 
+                            src={`${IMAGE_BASEURL}${product.images.large}`} alt={product.name} 
+                        />
+                        <div className="product-card-name-and-price">
+                            <h2 className="product-card-name">{product.name}</h2>
+                            <span className="product-card-price">{product.price} kr</span>
+                        </div>
+                        
                         {product.tags.map((tag) => (
-                            <span key={tag.id}>{tag.name}</span>
+                            <span 
+                                className="product-card-tags" 
+                                key={tag.id}>{tag.name} 
+                            </span>
                         ))}
-
-                        <span>{product.price} kr</span>
+                       
+                        <p product-card-description>{product.description}</p>
                     </li>
                 )}               
-            </span>
+            </ul>
         </>
     )
 };

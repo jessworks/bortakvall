@@ -13,16 +13,7 @@ export const CustomerDetails = () => {
         email: "",
     });
 
-   /* const [errors, setErrors] = useState<CustomerData> ({
-        firstName: "",
-        lastName: "",
-        streetAddress: "",
-        postalCode: "",
-        city: "",
-        phoneNumber: "",
-        email: "",
-    }); */
-
+    
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         
@@ -108,7 +99,7 @@ export const CustomerDetails = () => {
                 <button
                     type="submit"
                 >
-                    beställ
+                    Beställ
                 </button>
             </form>
         </>

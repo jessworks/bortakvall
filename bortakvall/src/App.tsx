@@ -1,7 +1,6 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './Router'
-import './App.css'
-import { CartContextProvider } from './context/cartContext'
+import './styles/index.scss';
 
 
 function App() {
