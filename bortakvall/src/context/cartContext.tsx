@@ -1,4 +1,5 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, type ReactNode } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
 type CartContextType = {
@@ -20,7 +21,7 @@ const getDefaultCart = (): Record<number, number> => {
 
 
 export const CartContextProvider = ({children}: Props) => {
-    const [cartItems, setCartItems] = useState<Record<number, number>>(getDefaultCart());
+    const [cartItems, setCartItems] = useLocalStorage<Record<number, number>>("cart", getDefaultCart());
 
     const addToCart = (itemId: number) => {
         setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }))
@@ -31,17 +32,11 @@ export const CartContextProvider = ({children}: Props) => {
     };
 
 
-    /*
-    const deleteFromCart = (itemId: number) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: }))
-    };
-    */
-
     const contextValue = {
         cartItems,
         addToCart,
         removeFromCart,
-        //deleteFromCart,
+        
     };
 
     console.log(cartItems);
