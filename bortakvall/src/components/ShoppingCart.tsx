@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { type Product } from "../types/ProductApi.types";
 import { getProducts, IMAGE_BASEURL } from "../services/BortakvallAPI";
 import { CartContext } from "../context/cartContext";
+import { Link } from "react-router-dom";
 
 
 export const ShoppingCart = () => {
@@ -46,7 +47,7 @@ export const ShoppingCart = () => {
             </ul>
             
             <span>{sumTotalCart} kr</span>
-            <button>till kassa</button>
+            <Link className="link-as-btn" to='/OrderForm'>Till kassan</Link>
         </>
     )
 };

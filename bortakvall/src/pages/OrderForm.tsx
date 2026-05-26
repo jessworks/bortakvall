@@ -7,11 +7,10 @@ export const OrderForm = () => {
 
     return (
         <>
-            <h2>OrderForm</h2>
             <span> printCart </span>
             <ShoppingCart />
             <CustomerDetails />
-            <Link to='/'>Home (fortsätt handla)</Link>
+            <Link className="link-as-btn" to='/'>Fortsätt handla</Link>
         </>
     )
 };

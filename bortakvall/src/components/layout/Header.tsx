@@ -5,8 +5,10 @@ export const Header = () => {
 
     return (
         <>
-            <h1>Bortakväll</h1>
-            <ShoppingCart />
+            <header>
+                <h1>Bortakväll</h1>
+                <ShoppingCart />
+            </header>
         </>
     )
 }

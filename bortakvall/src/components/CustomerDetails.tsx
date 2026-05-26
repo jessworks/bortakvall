@@ -108,7 +108,7 @@ export const CustomerDetails = () => {
                 <button
                     type="submit"
                 >
-                    beställ
+                    Beställ
                 </button>
             </form>
         </>
