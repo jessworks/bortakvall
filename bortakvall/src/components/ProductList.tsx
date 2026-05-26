@@ -54,8 +54,8 @@ export const ProductList = () => {
                                     className="product-list-add" 
                                     onClick={() => addToCart(product.id)}
                                     >  
-                                        lägg i varukorg
-                                    </button>     
+                                        Lägg i varukorg
+                                </button>     
                             </div>      
                         </div>
                                 

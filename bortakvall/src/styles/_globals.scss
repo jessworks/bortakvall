@@ -4,6 +4,12 @@ body {
     margin: 0;
 }
 
+/*
+* {
+  outline: 1px solid red;
+}
+  */
+
 
 header {
     background-color: #f18fb8;
@@ -19,6 +25,7 @@ main {
     background-color: #fac6bb;
     height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
 
@@ -31,14 +38,13 @@ ul {
 }
 
 
-
 button {
     background-color: #95bbea;
     height: 44px;
-    min-width: 80px;
+    min-width: 24px;
     border-radius: 5px;
-    margin: 5px 15px 30px 0;
-    font-size: 16px;
+    margin: 15px 15px 15px 0;
+    font-size: 1.3rem;
 
     &:hover {
         background-color: #caa9c6;

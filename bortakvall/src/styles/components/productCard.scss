@@ -1,0 +1,23 @@
+.product-card {
+    margin: 35px 0 45px 0;
+
+    .product-card-img {
+        margin-top: 25px;
+    }
+
+    .product-card-name {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin: 10px 0 0 0;
+    }
+
+    .product-card-price {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .product-card-tags {
+        font-size: 1.6;
+        font-weight: bold;
+    }
+}
