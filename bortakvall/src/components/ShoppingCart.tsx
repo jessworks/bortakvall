@@ -25,8 +25,6 @@ export const ShoppingCart = () => {
 
     return (
         <>
-            <button>stäng</button>
-
             <ul>
                 {products?.map((product) => {
                     if (cartItems[product.id] > 0) {
@@ -63,7 +61,6 @@ export const ShoppingCart = () => {
             </ul>
             
             <span>{sumTotalCart} kr</span>
-            <Link className="link-as-btn" to='/OrderForm'>Till kassan</Link>
         </>
     )
 };

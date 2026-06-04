@@ -28,7 +28,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                         </span>
                     ))}
                     
-                    <p product-card-description>{product.description}</p>
+                    <p product-card-description>{product.description.replace(/<[^>]*>/g, "")}</p>
                 </div>
             )}               
         </>

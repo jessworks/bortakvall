@@ -1,4 +1,4 @@
-import { ShoppingCart } from "../ShoppingCart"
+import { Cart } from "../Cart"
 
 
 export const Header = () => {
@@ -7,7 +7,7 @@ export const Header = () => {
         <>
             <header>
                 <h1>Bortakväll</h1>
-                <ShoppingCart />
+                <Cart />
             </header>
         </>
     )
