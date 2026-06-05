@@ -1,0 +1,23 @@
+.shopping-cart-dropdown {
+  position:absolute;
+  top: 100%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  width: 350px;
+  border: none;
+  margin: 0;
+  gap: 4px;
+  z-index: 20; // above when active
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: aquamarine;
+
+  .shopping-cart { 
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: bisque;
+  }
+}
