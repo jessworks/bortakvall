@@ -59,7 +59,7 @@ export const ShoppingCart = () => {
                 })}               
             </ul>
             
-            <span>Totalt: {sumTotalCart} kr</span>
+            <span className="sum-total-cart">Totalt: {sumTotalCart} kr</span>
         </div>
     )
 };

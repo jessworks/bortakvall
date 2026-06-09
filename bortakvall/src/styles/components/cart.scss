@@ -7,17 +7,27 @@
   background: none;
   width: 350px;
   border: none;
-  margin: 0;
+  margin: 31px 0 0 0;
   gap: 4px;
   z-index: 20; // above when active
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  background-color: aquamarine;
+  background-color: #c9dee0;
 
   .shopping-cart { 
     flex-direction: column;
     gap: 16px;
     padding: 16px;
-    background-color: bisque;
+
+    .sum-total-cart {
+      font-size: 1.3rem;
+      font-weight: bolder;
+    }
+  }
+
+  .checkout-link {
+    align-self: center;
+    width: 100px;
+    margin: 25px 0 25px 0;
   }
 }

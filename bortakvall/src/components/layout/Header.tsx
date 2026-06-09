@@ -11,26 +11,25 @@ export const Header = () => {
         setIsCartOpen(prev => !prev)
     }
 
-    /*const closeCart = () => {
-        setIsCartOpen(false)
-    }*/
-
+    
     return (
         <>
             <header>
                 <h1>Bortakväll</h1>
+                
                 <div className="cart-wrapper">
                     <button 
-                        className="cart-icon" 
+                        className="toggle-cart" 
                         onClick={toggleCart} 
                         aria-label={isCartOpen ? "Close shopping cart" : "Open shopping cart"}
                     >
-                        <img src=
-                        {isCartOpen ? xIcon : cartIcon} />
+                        <img className="toggle-cart-icon" 
+                            src=
+                            {isCartOpen ? xIcon : cartIcon}
+                            alt="Icon for opening and closing shopping cart." 
+                        />
                     </button>
-
-                    {isCartOpen && <Cart />}
-                    
+                    {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
                 </div>
             </header>
         </>

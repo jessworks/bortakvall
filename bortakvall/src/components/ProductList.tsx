@@ -29,11 +29,9 @@ export const ProductList = () => {
 
     return (
         <>
-            {selectedProduct && (
-                <ProductCard product={selectedProduct} />
-            )}
+            
 
-            <ul>
+            <ul className="product-list">
                 {products?.map(product => (
                     <li className="product-list-li" key={product.id}>
                         <img 
@@ -43,7 +41,7 @@ export const ProductList = () => {
                         <div className="product-list-text">
                             <h2 className="product-list-name">{product.name}</h2>
                             <span className="product-list-price">{product.price} kr</span>
-                            <div product-list-btns>
+                            <div className="product-list-btns">
                                 <button 
                                     className="product-list-open-card" 
                                     onClick={() => openProductCard(product.id)}
@@ -53,12 +51,15 @@ export const ProductList = () => {
                                 <button 
                                     className="product-list-add" 
                                     onClick={() => addToCart(product.id)}
-                                    >  
+                                >  
                                         Lägg i varukorg
                                 </button>     
                             </div>      
                         </div>
-                                
+                        
+                        {selectedProduct && (
+                            <ProductCard product={selectedProduct} />
+                        )} 
                     </li>
                 ))}               
             </ul>
