@@ -22,15 +22,42 @@ export const ProductList = () => {
 
     
     const openProductCard = async (id: number) => {
+        localStorage.setItem("selectedProductId", id.toString());
+
         const data = await getProduct(id);
         setSelectedProduct(data);
-    }
+    };
+
+    useEffect(() => {
+        const loadSelectedProduct = async () => {
+            const savedId = localStorage.getItem("selectedProductId");
+
+            if (savedId) {
+                const data = await getProduct(Number(savedId));
+                setSelectedProduct(data);
+            }
+        };
+
+        loadSelectedProduct();
+    }, []);
+
+    const closeProductCard = () => {
+        setSelectedProduct(undefined);
+        localStorage.removeItem("selectedProductId");
+    };
 
 
     return (
         <>
-            
-
+            {selectedProduct ? (
+                <>
+                    <ProductCard product={selectedProduct} />
+                    <button onClick={() => closeProductCard()}>
+                        Läs mindre
+                    </button>
+                </>
+                
+            ):(
             <ul className="product-list">
                 {products?.map(product => (
                     <li className="product-list-li" key={product.id}>
@@ -56,13 +83,10 @@ export const ProductList = () => {
                                 </button>     
                             </div>      
                         </div>
-                        
-                        {selectedProduct && (
-                            <ProductCard product={selectedProduct} />
-                        )} 
                     </li>
                 ))}               
             </ul>
+            )}
         </>
     )
 };

@@ -5,7 +5,7 @@ export const Home = () => {
 
     return (
         <>
-            <span className="tagline">Hemmakvällsmys på bortakvällen</span>
+            <span className="tagline">Mys på bortakvällen</span>
             <ProductList />
         </>
     )
