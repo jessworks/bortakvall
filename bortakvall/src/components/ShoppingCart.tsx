@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { type Product } from "../types/ProductApi.types";
 import { getProducts, IMAGE_BASEURL } from "../services/BortakvallAPI";
 import { CartContext } from "../context/cartContext";
-import { Link } from "react-router-dom";
 
 
 export const ShoppingCart = () => {
@@ -24,9 +23,7 @@ export const ShoppingCart = () => {
 
 
     return (
-        <>
-            <button>stäng</button>
-
+        <div className="shopping-cart">
             <ul>
                 {products?.map((product) => {
                     if (cartItems[product.id] > 0) {
@@ -46,7 +43,7 @@ export const ShoppingCart = () => {
                                     >
                                         -
                                     </button>
-                                    <span className="shopping-cart-qty">{cartItems[product.id]} st</span>
+                                    <span className="shopping-cart-qty">{cartItems[product.id]} st </span>
                                     <button 
                                         className="shopping-cart-add" 
                                         onClick={() => addToCart(product.id)}
@@ -62,8 +59,7 @@ export const ShoppingCart = () => {
                 })}               
             </ul>
             
-            <span>{sumTotalCart} kr</span>
-            <Link className="link-as-btn" to='/OrderForm'>Till kassan</Link>
-        </>
+            <span className="sum-total-cart">Totalt: {sumTotalCart} kr</span>
+        </div>
     )
 };

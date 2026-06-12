@@ -22,18 +22,43 @@ export const ProductList = () => {
 
     
     const openProductCard = async (id: number) => {
+        localStorage.setItem("selectedProductId", id.toString());
+
         const data = await getProduct(id);
         setSelectedProduct(data);
-    }
+    };
+
+    useEffect(() => {
+        const loadSelectedProduct = async () => {
+            const savedId = localStorage.getItem("selectedProductId");
+
+            if (savedId) {
+                const data = await getProduct(Number(savedId));
+                setSelectedProduct(data);
+            }
+        };
+
+        loadSelectedProduct();
+    }, []);
+
+    const closeProductCard = () => {
+        setSelectedProduct(undefined);
+        localStorage.removeItem("selectedProductId");
+    };
 
 
     return (
         <>
-            {selectedProduct && (
-                <ProductCard product={selectedProduct} />
-            )}
-
-            <ul>
+            {selectedProduct ? (
+                <>
+                    <ProductCard product={selectedProduct} />
+                    <button onClick={() => closeProductCard()}>
+                        Läs mindre
+                    </button>
+                </>
+                
+            ):(
+            <ul className="product-list">
                 {products?.map(product => (
                     <li className="product-list-li" key={product.id}>
                         <img 
@@ -43,7 +68,7 @@ export const ProductList = () => {
                         <div className="product-list-text">
                             <h2 className="product-list-name">{product.name}</h2>
                             <span className="product-list-price">{product.price} kr</span>
-                            <div product-list-btns>
+                            <div className="product-list-btns">
                                 <button 
                                     className="product-list-open-card" 
                                     onClick={() => openProductCard(product.id)}
@@ -53,15 +78,15 @@ export const ProductList = () => {
                                 <button 
                                     className="product-list-add" 
                                     onClick={() => addToCart(product.id)}
-                                    >  
-                                        lägg i varukorg
-                                    </button>     
+                                >  
+                                        Lägg i varukorg
+                                </button>     
                             </div>      
                         </div>
-                                
                     </li>
                 ))}               
             </ul>
+            )}
         </>
     )
 };

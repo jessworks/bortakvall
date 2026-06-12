@@ -1,0 +1,33 @@
+.shopping-cart-dropdown {
+  position:absolute;
+  top: 100%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  width: 350px;
+  border: none;
+  margin: 31px 0 0 0;
+  gap: 4px;
+  z-index: 20; // above when active
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: #c9dee0;
+
+  .shopping-cart { 
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+
+    .sum-total-cart {
+      font-size: 1.3rem;
+      font-weight: bolder;
+    }
+  }
+
+  .checkout-link {
+    align-self: center;
+    width: 100px;
+    margin: 25px 0 25px 0;
+  }
+}

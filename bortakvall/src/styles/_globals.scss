@@ -1,3 +1,11 @@
+/*
+* {
+  outline: 1px solid red;
+}
+*/
+
+
+
 body {
     font-family: 'Nunito Sans', sans-serif;
     color: #242234;
@@ -5,40 +13,41 @@ body {
 }
 
 
-header {
-    background-color: #f18fb8;
-    border-bottom: 6px solid #a2c0c2;
-
-    h1 {
-        margin-top: 0;
-    }
-}
-
-
 main {
     background-color: #fac6bb;
     height: 100%;
     margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tagline {
+    text-align: center;
+    padding-top: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 
 ul {
     margin: 0;
+    padding: 0;
 
     li {
-    list-style: none;
+        list-style: none;
     }
 }
-
 
 
 button {
     background-color: #95bbea;
     height: 44px;
-    min-width: 80px;
+    min-width: 24px;
     border-radius: 5px;
-    margin: 5px 15px 30px 0;
-    font-size: 16px;
+    margin: 15px 15px 15px 0;
+    font-size: 1.3rem;
 
     &:hover {
         background-color: #caa9c6;
@@ -47,24 +56,24 @@ button {
 
 
 .link-as-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 44px;
-  min-width: 80px;
-  padding: 0 20px;
-  border: solid 2px #242234;
-  border-radius: 5px;
-  margin-top: 50px;
-  text-decoration: none;
-  font-size: 16px;
-  background-color: #95bbea;
-  color: #242234;
-  cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    min-width: 80px;
+    padding: 0 20px;
+    border: solid 2px #242234;
+    border-radius: 5px;
+    margin-top: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #95bbea;
+    color: #242234;
+    cursor: pointer;
 
-  &:hover {
-    background-color: #caa9c6;
-  }
+    &:hover {
+        background-color: #caa9c6;
+    }
 }
 
 

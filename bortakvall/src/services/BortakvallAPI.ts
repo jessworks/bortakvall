@@ -1,5 +1,5 @@
 import axios from "axios";
-import { type Product } from "../types/ProductApi.types";
+import { type Product, type ProductDetails } from "../types/ProductApi.types";
 
 
 const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
@@ -42,7 +42,7 @@ export async function getProducts () {
 
 
 export async function getProduct(productId: number) {
-    const response = await apiInstance.get<ApiResponse<Product>>(`/products/${productId}`)
+    const response = await apiInstance.get<ApiResponse<ProductDetails>>(`/products/${productId}`)
     
     //(`/products/${productId}`)
     

@@ -6,11 +6,10 @@ import { ShoppingCart } from "../components/ShoppingCart";
 export const OrderForm = () => {
 
     return (
-        <>
-            <span> printCart </span>
+        <div className="order-form-wrapper">
             <ShoppingCart />
             <CustomerDetails />
-            <Link className="link-as-btn" to='/'>Fortsätt handla</Link>
-        </>
+            <Link className="link-as-btn home-link" to='/'>Fortsätt handla</Link>
+        </div>
     )
 };
