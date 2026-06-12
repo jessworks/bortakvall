@@ -8,7 +8,7 @@ import { CartContext } from "../context/cartContext";
 export const ProductList = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProduct, setSelectedProduct] = useState<ProductDetails>();
-    const { addToCart } = useContext(CartContext)!; // inte idealt, men för proof of concept i denna stund
+    const { addToCart } = useContext(CartContext)!; 
     
 
     useEffect(() => {

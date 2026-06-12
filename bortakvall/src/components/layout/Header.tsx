@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Cart } from "../Cart"
 import cartIcon from "../../assets/cartIcon.svg";
 import xIcon from "../../assets/xIcon.svg";
-import { useState } from "react";
 
 
 export const Header = () => {
@@ -9,7 +9,7 @@ export const Header = () => {
 
     const toggleCart = () => {
         setIsCartOpen(prev => !prev)
-    }
+    };
 
     
     return (
@@ -29,6 +29,7 @@ export const Header = () => {
                             alt="Icon for opening and closing shopping cart." 
                         />
                     </button>
+                    
                     {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
                 </div>
             </header>

@@ -38,8 +38,8 @@ export const ShoppingCart = () => {
                                 
                                 <div className="shopping-cart-add-and-remove">
                                     <button 
-                                    className="shopping-cart-remove" 
-                                    onClick={() => removeFromCart(product.id)}
+                                        className="shopping-cart-remove" 
+                                        onClick={() => removeFromCart(product.id)}
                                     >
                                         -
                                     </button>
