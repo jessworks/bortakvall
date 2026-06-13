@@ -22,28 +22,44 @@ type ApiResponse<T> = {
 
 
 export async function getProducts () {
-    const response = await apiInstance.get<ApiResponse<Product[]>>("/products")
-    
-    console.log(response.data);
+    try {
+        const response = await apiInstance.get<ApiResponse<Product[]>>("/products")
+        console.log(response.data);
 
-    return response.data.data;
+        return response.data.data;
+    } catch (error: unknown) {      //  känns fel att skriva 'unknown' 
+        console.error("Failed to getProducts:", error);
+
+        throw error;
+    }
 };
 
 export async function getProduct(productId: number) {
-    const response = await apiInstance.get<ApiResponse<ProductDetails>>(`/products/${productId}`)
-    
-    console.log(response.data);
+    try {
+        const response = await apiInstance.get<ApiResponse<ProductDetails>>(`/products/${productId}`)
+        console.log(response.data);
 
-    return response.data.data;
+        return response.data.data;
+    } catch (error: unknown) {
+        console.error("Failed to getProduct:", error);
+
+        throw error;
+    }
 };
 
 export async function postOrder(
     userId: number,
     order: OrderCustomerDetails,
     ) {
-    const response = await apiInstance.post(`/users/${userId}/orders`, order);
+    try {
+        const response = await apiInstance.post<ApiResponse<OrderCustomerDetails>>(`/users/${userId}/orders`, order);
 
-    return response.data;
+        return response.data.data;
+    } catch (error: unknown) {
+        console.error("Failed to postOrder:", error);
+
+        throw error;
+    }
 };
 
 

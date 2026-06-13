@@ -72,9 +72,12 @@ export const OrderForm = () => {
 
         if (orderItems.length === 0) {
             console.error("cart is empty");
+            //communicate empty cart to user
         };
 
-        await postOrder(113, order);
+        const result = await postOrder(113, order);
+        console.log("Order created:", result);
+        //empty cart and form --> prop for submit/success/empty cart and form
     };
 
 
