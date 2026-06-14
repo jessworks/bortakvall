@@ -1,20 +1,12 @@
-import { createContext, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { CartContext } from "./cartContext";
 
-
-type CartContextType = {
-    cartItems: Record<number, number>;
-    addToCart: (itemId: number) => void;
-    removeFromCart: (itemId: number) => void;
-    clearCart: () => void;
-};
 
 type Props = {
     children: ReactNode;
 };
 
-
-export const CartContext = createContext<CartContextType | null>(null);
 
 const getDefaultCart = (): Record<number, number> => {
    return{};

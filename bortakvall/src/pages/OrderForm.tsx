@@ -7,7 +7,6 @@ import { getProducts } from "../services/BortakvallAPI";
 import { postOrder } from "../services/BortakvallAPI";
 import { CustomerDetails } from "../components/CustomerDetails"
 import { ShoppingCart } from "../components/ShoppingCart";
-//import type { OrderResponse } from "../types/Order.types";
 
 
 export const OrderForm = () => {
