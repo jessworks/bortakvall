@@ -49,6 +49,7 @@ export const CustomerDetails = ({
                         id="firstName"
                         name="firstName"
                         value={customerData.firstName}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -59,6 +60,7 @@ export const CustomerDetails = ({
                         id="lastName"
                         name="lastName"
                         value={customerData.lastName}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -69,6 +71,7 @@ export const CustomerDetails = ({
                         id="streetAddress"
                         name="streetAddress"
                         value={customerData.streetAddress}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -79,6 +82,7 @@ export const CustomerDetails = ({
                         id="postalCode"
                         name="postalCode"
                         value={customerData.postalCode}
+                        maxLength={6}
                         onChange={handleChange}
                         required
                     />
@@ -89,6 +93,7 @@ export const CustomerDetails = ({
                         id="city"
                         name="city"
                         value={customerData.city}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     /> 
@@ -99,6 +104,7 @@ export const CustomerDetails = ({
                         id="phoneNumber"
                         name="phoneNumber"
                         value={customerData.phoneNumber}
+                        maxLength={255}
                         onChange={handleChange}
                     />               
 
@@ -108,12 +114,13 @@ export const CustomerDetails = ({
                         id="email"
                         name="email"
                         value={customerData.email}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
 
                     <button
-                        type="submit"
+                        type="submit" 
                     >
                         Beställ
                     </button>

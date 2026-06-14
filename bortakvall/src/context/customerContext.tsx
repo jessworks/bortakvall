@@ -5,6 +5,7 @@ import type { CustomerData } from "../types/CustomerDetails.types";
 interface CustomerContextType {
     customerData: CustomerData;
     setCustomerData: React.Dispatch<React.SetStateAction<CustomerData>>;
+    resetCustomerData: () => void;
 };
 
 interface Props {
@@ -26,12 +27,25 @@ export const CustomerContextProvider = ({children}: Props) => {
         email: "",
     });
 
+    const resetCustomerData = () => {
+        setCustomerData({
+            firstName: "",
+            lastName: "",
+            streetAddress: "",
+            postalCode: "",
+            city: "",
+            phoneNumber: "",
+            email: "",
+        });
+    };
+
     
     return (
         <CustomerContext.Provider
             value={{
                 customerData,
                 setCustomerData,
+                resetCustomerData,
             }}
         >
             {children}

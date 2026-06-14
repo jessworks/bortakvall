@@ -10,7 +10,7 @@ export const ShoppingCart = () => {
 
      useEffect(() => {
             const loadProducts = async () => {
-                const data = await getProducts();       //try/catch
+                const data = await getProducts();     
                 setProducts(data);
             }
            

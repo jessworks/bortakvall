@@ -1,6 +1,6 @@
 import axios from "axios";
 import { type Product, type ProductDetails } from "../types/ProductApi.types";
-import type { OrderCustomerDetails } from "../types/Order.types";
+import type { OrderCustomerDetails, OrderResponse } from "../types/Order.types";
 
 
 const API_BASEURL = import.meta.env.VITE_API_BASE_URL;
@@ -24,8 +24,7 @@ type ApiResponse<T> = {
 export async function getProducts () {
     try {
         const response = await apiInstance.get<ApiResponse<Product[]>>("/products")
-        console.log(response.data);
-
+    
         return response.data.data;
     } catch (error: unknown) {      //  känns fel att skriva 'unknown' 
         console.error("Failed to getProducts:", error);
@@ -37,7 +36,6 @@ export async function getProducts () {
 export async function getProduct(productId: number) {
     try {
         const response = await apiInstance.get<ApiResponse<ProductDetails>>(`/products/${productId}`)
-        console.log(response.data);
 
         return response.data.data;
     } catch (error: unknown) {
@@ -47,12 +45,28 @@ export async function getProduct(productId: number) {
     }
 };
 
+/*
 export async function postOrder(
     userId: number,
     order: OrderCustomerDetails,
     ) {
     try {
         const response = await apiInstance.post<ApiResponse<OrderCustomerDetails>>(`/users/${userId}/orders`, order);
+
+        return response.data.data;
+    } catch (error: unknown) {
+        console.error("Failed to postOrder:", error);
+
+        throw error;
+    }
+};
+*/
+export async function postOrder(
+    userId: number,
+    order: OrderCustomerDetails,
+    ): Promise<OrderResponse> {
+    try {
+        const response = await apiInstance.post<ApiResponse<OrderResponse>>(`/users/${userId}/orders`, order);
 
         return response.data.data;
     } catch (error: unknown) {

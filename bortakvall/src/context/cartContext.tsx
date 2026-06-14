@@ -6,6 +6,7 @@ type CartContextType = {
     cartItems: Record<number, number>;
     addToCart: (itemId: number) => void;
     removeFromCart: (itemId: number) => void;
+    clearCart: () => void;
 };
 
 type Props = {
@@ -31,12 +32,16 @@ export const CartContextProvider = ({children}: Props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: Math.max((prev[itemId]) - 1, 0)}))
     };
 
+    const clearCart = () => {
+        setCartItems({});
+    };
+
 
     const contextValue = {
         cartItems,
         addToCart,
         removeFromCart,
-        
+        clearCart,
     };
 
     console.log(cartItems);

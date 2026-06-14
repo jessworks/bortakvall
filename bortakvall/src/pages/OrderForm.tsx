@@ -7,12 +7,16 @@ import { getProducts } from "../services/BortakvallAPI";
 import { postOrder } from "../services/BortakvallAPI";
 import { CustomerDetails } from "../components/CustomerDetails"
 import { ShoppingCart } from "../components/ShoppingCart";
+//import type { OrderResponse } from "../types/Order.types";
 
 
 export const OrderForm = () => {
     const customerContext = useContext(CustomerContext);
     const cartContext = useContext(CartContext);
     const [products, setProducts] = useState<Product[]>([]);
+    const [orderSuccessMessage, setOrderSuccessMessage] = useState<string | null>(null);
+    const [orderErrorMessage, setOrderErrorMessage] = useState<string | null>(null);
+    
 
     useEffect(() => {
         const load = async () => {
@@ -31,11 +35,14 @@ export const OrderForm = () => {
         throw new Error("CartContext missing");
     };
 
-    const { customerData } = customerContext;
-    const { cartItems } = cartContext;
+    const { clearCart, cartItems } = cartContext;
+    const { customerData, resetCustomerData } = customerContext;
+     //const { customerData } = customerContext;
+    //const { cartItems } = cartContext;
 
     const handleSubmitOrder = async () => {
-        console.log("submitting order");
+        setOrderSuccessMessage(null);
+        setOrderErrorMessage(null);
 
         const orderItems = products
             .filter((p) => cartItems[p.id] > 0)
@@ -44,7 +51,13 @@ export const OrderForm = () => {
                 qty: cartItems[p.id],
                 item_price: p.price,
                 item_total: p.price * cartItems[p.id],
-            }));
+        }));
+
+        if (orderItems.length === 0) {
+            setOrderErrorMessage("Din varukorg är tom. Lägg till varor i korgen innan du beställer.");
+
+            return
+        };
 
         const orderTotal = orderItems.reduce(
             (sum, item) => sum + item.item_total, 0
@@ -63,21 +76,23 @@ export const OrderForm = () => {
             order_total: orderTotal,
         };
 
-        console.log("cartItems", cartItems);
-        console.log("products", products);
-        console.log("orderItems", orderItems);
-        console.log("orderTotal", orderTotal);
-        console.log(order);
-        
-
-        if (orderItems.length === 0) {
-            console.error("cart is empty");
-            //communicate empty cart to user
+        const successMessage = (orderId: number) => {
+            return `Tack för din beställning! Order ${orderId} är mottagen.`;
         };
 
-        const result = await postOrder(113, order);
-        console.log("Order created:", result);
-        //empty cart and form --> prop for submit/success/empty cart and form
+        try {
+            const result = await postOrder(113, order);
+            console.log("Order created:", result);
+
+
+            setOrderSuccessMessage(successMessage(result.id));
+            clearCart();
+            resetCustomerData();
+           
+            //empty cart and form --> prop for submit/success/empty cart and form
+        } catch {
+            setOrderErrorMessage("Något gick fel vid beställningen.");
+        }   
     };
 
 
@@ -95,6 +110,15 @@ export const OrderForm = () => {
             >
                 Fortsätt handla
             </Link>
+
+             {orderSuccessMessage && (
+                <p className="order-success-message">{orderSuccessMessage}</p>
+            )}
+
+            {orderErrorMessage && (
+                <p className="order-error-message">{orderErrorMessage}</p>
+            )}           
+
         </div>
     )
 };

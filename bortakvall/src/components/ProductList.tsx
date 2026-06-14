@@ -13,7 +13,7 @@ export const ProductList = () => {
 
     useEffect(() => {
         const loadProducts = async () => {
-            const data = await getProducts();       //try/catch
+            const data = await getProducts();
             setProducts(data);
         }
        
@@ -24,7 +24,7 @@ export const ProductList = () => {
     const openProductCard = async (id: number) => {
         localStorage.setItem("selectedProductId", id.toString());
 
-        const data = await getProduct(id);      // try/catch
+        const data = await getProduct(id);
         setSelectedProduct(data);
     };
 
@@ -33,7 +33,7 @@ export const ProductList = () => {
             const savedId = localStorage.getItem("selectedProductId");
 
             if (savedId) {
-                const data = await getProduct(Number(savedId));     //try/catch
+                const data = await getProduct(Number(savedId));
                 setSelectedProduct(data);
             }
         };
