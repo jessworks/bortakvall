@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 import { CartContext } from "./cartContext";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
 type Props = {
