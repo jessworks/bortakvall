@@ -1,9 +1,4 @@
-/*
-* {
-  outline: 1px solid red;
-}
-*/
-
+@use './mixins';
 
 
 body {
@@ -23,11 +18,18 @@ main {
     align-items: center;
 }
 
+
 .tagline {
     text-align: center;
     padding-top: 25px;
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+@include mixins.respond-to(desktop) {
+    .tagline {
+        font-size: 2rem;
+    }
 }
 
 

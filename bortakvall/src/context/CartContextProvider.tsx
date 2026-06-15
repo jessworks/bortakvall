@@ -1,19 +1,12 @@
-import { createContext, type ReactNode } from "react";
+import { type ReactNode } from "react";
+import { CartContext } from "./cartContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-
-type CartContextType = {
-    cartItems: Record<number, number>;
-    addToCart: (itemId: number) => void;
-    removeFromCart: (itemId: number) => void;
-};
 
 type Props = {
     children: ReactNode;
 };
 
-
-export const CartContext = createContext<CartContextType | null>(null);
 
 const getDefaultCart = (): Record<number, number> => {
    return{};
@@ -31,16 +24,21 @@ export const CartContextProvider = ({children}: Props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: Math.max((prev[itemId]) - 1, 0)}))
     };
 
+    const clearCart = () => {
+        setCartItems({});
+    };
+
 
     const contextValue = {
         cartItems,
         addToCart,
         removeFromCart,
-        
+        clearCart,
     };
 
     console.log(cartItems);
 
+    
     return (
         <CartContext.Provider value={contextValue}>
             {children}

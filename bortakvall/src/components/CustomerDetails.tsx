@@ -1,23 +1,33 @@
-import { useState } from "react"
-import type { CustomerData } from "../types/CustomerDetails.types";
+import { useContext } from "react";
+import { CustomerContext } from "../context/customerContext";
 
 
-export const CustomerDetails = () => {
-    const [formData, setFormData] = useState<CustomerData> ({
-        firstName: "",
-        lastName: "",
-        streetAddress: "",
-        postalCode: "",
-        city: "",
-        phoneNumber: "",
-        email: "",
-    });
+interface CustomerDetailsProps {
+    onSubmitOrder: () => void;
+};
 
+
+export const CustomerDetails = ({
+    onSubmitOrder,
+    }: CustomerDetailsProps) => {
+
+    const customerContext = useContext(CustomerContext);
+
+    if (!customerContext) {
+        throw new Error (
+            "CustomerContext must be used within CustomerContextProvider"
+        );
+    };
+
+    const {
+        customerData,
+        setCustomerData
+    } = customerContext;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        
-        setFormData((prev) => ({
+
+        setCustomerData((prev) => ({
             ...prev,
             [name]: value,
         }));
@@ -27,13 +37,19 @@ export const CustomerDetails = () => {
     return (
         <>
             <div className="form-container">
-                <form>               
+                <form
+                    onSubmit={(event) => {
+                        event.preventDefault();
+                        onSubmitOrder();
+                    }}
+                >               
                     <label htmlFor="firstName">Förnamn</label>
                     <input
                         type="text"
                         id="firstName"
                         name="firstName"
-                        value={formData.firstName}
+                        value={customerData.firstName}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -43,7 +59,8 @@ export const CustomerDetails = () => {
                         type="text"
                         id="lastName"
                         name="lastName"
-                        value={formData.lastName}
+                        value={customerData.lastName}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -53,7 +70,8 @@ export const CustomerDetails = () => {
                         type="text"
                         id="streetAddress"
                         name="streetAddress"
-                        value={formData.streetAddress}
+                        value={customerData.streetAddress}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
@@ -63,7 +81,8 @@ export const CustomerDetails = () => {
                         type="text"
                         id="postalCode"
                         name="postalCode"
-                        value={formData.postalCode}
+                        value={customerData.postalCode}
+                        maxLength={6}
                         onChange={handleChange}
                         required
                     />
@@ -73,7 +92,8 @@ export const CustomerDetails = () => {
                         type="text"
                         id="city"
                         name="city"
-                        value={formData.city}
+                        value={customerData.city}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     /> 
@@ -83,7 +103,8 @@ export const CustomerDetails = () => {
                         type="text"
                         id="phoneNumber"
                         name="phoneNumber"
-                        value={formData.phoneNumber}
+                        value={customerData.phoneNumber}
+                        maxLength={255}
                         onChange={handleChange}
                     />               
 
@@ -92,13 +113,14 @@ export const CustomerDetails = () => {
                         type="text"
                         id="email"
                         name="email"
-                        value={formData.email}
+                        value={customerData.email}
+                        maxLength={255}
                         onChange={handleChange}
                         required
                     />
 
                     <button
-                        type="submit"
+                        type="submit" 
                     >
                         Beställ
                     </button>

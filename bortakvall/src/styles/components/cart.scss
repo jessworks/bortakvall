@@ -1,3 +1,6 @@
+@use '../mixins';
+
+
 .shopping-cart-dropdown {
   position:absolute;
   top: 100%;
@@ -14,20 +17,16 @@
   cursor: pointer;
   background-color: #c9dee0;
 
-  .shopping-cart { 
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-
-    .sum-total-cart {
-      font-size: 1.3rem;
-      font-weight: bolder;
-    }
-  }
-
   .checkout-link {
-    align-self: center;
+    align-self: flex-end;
     width: 100px;
-    margin: 25px 0 25px 0;
+    margin: 25px 25px 25px 0;
+  }
+}
+
+
+@include mixins.respond-to(desktop) {
+  .shopping-cart-dropdown {
+    width: 800px;
   }
 }

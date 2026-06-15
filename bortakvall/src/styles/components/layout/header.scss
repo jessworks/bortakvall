@@ -1,3 +1,5 @@
+@use '../../mixins';
+
 header {
     position: relative;
     display: flex;
@@ -36,5 +38,13 @@ header {
                 color: #242234;
             }
         }
+    }
+}
+
+@include mixins.respond-to(desktop) {
+    header {
+        h1 {
+        font-size: 4rem;
+    }
     }
 }

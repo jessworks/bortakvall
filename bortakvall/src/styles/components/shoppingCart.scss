@@ -1,0 +1,85 @@
+@use '../mixins';
+
+
+.shopping-cart { 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    margin-bottom: 40px;
+
+    .shopping-cart-li {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 0 30px 0;
+
+        .shopping-cart-description {
+            display: flex;
+            flex-direction: column;
+
+            .shopping-cart-price { // det här är min nemesis: hur element påverkar varandra vid flexbox
+                font-size: 1.3rem;
+                align-self: flex-end;
+                margin-right: 20px;
+            }
+        }
+
+        .shopping-cart-add-remove {
+            align-self: flex-end;
+            margin-right: 10px;
+
+            .shopping-cart-btn {
+                font-size: 1.5rem;
+            }
+
+            .shopping-cart-qty {
+                font-size: 1.2rem;
+                padding-right: 10px;
+            }
+        }
+    }
+
+    .sum-total-cart {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      align-self: flex-end;
+      margin: 30px 25px 0 0;
+      border-bottom: 2px solid #242234;
+    }
+}
+
+
+@include mixins.respond-to(desktop) {
+    .shopping-cart {
+        .shopping-cart-li {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+
+            .shopping-cart-img {
+                grid-column: 2 / span 4;
+            }
+
+            .shopping-cart-description {
+                grid-column: 7 / span 6;
+
+                .shopping-cart-name {
+                    font-size: 2.5rem;
+                }
+
+                .shopping-cart-price {
+                    font-size: 1.5rem;
+                }
+
+                .shopping-cart-qty {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .sum-total-cart {
+            font-size: 3rem;
+        }
+    }
+}

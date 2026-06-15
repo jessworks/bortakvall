@@ -8,7 +8,7 @@ import { CartContext } from "../context/cartContext";
 export const ProductList = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProduct, setSelectedProduct] = useState<ProductDetails>();
-    const { addToCart } = useContext(CartContext)!; // inte idealt, men för proof of concept i denna stund
+    const { addToCart } = useContext(CartContext)!; 
     
 
     useEffect(() => {
@@ -65,9 +65,11 @@ export const ProductList = () => {
                             className="product-list-img" 
                             src={`${IMAGE_BASEURL}${product.images.thumbnail}`} alt={product.name} 
                         />
-                        <div className="product-list-text">
-                            <h2 className="product-list-name">{product.name}</h2>
-                            <span className="product-list-price">{product.price} kr</span>
+                        <div className="product-list-description">
+                            <div className="product-list-description-text">
+                                <h2 className="product-list-name">{product.name}</h2>
+                                <span className="product-list-price">{product.price} kr</span>
+                            </div>
                             <div className="product-list-btns">
                                 <button 
                                     className="product-list-open-card" 
