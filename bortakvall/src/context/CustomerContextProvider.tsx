@@ -3,19 +3,9 @@ import { CustomerContext } from "./customerContext";
 import type { CustomerData } from "../types/CustomerDetails.types";
 
 
-/*
-interface CustomerContextType {
-    customerData: CustomerData;
-    setCustomerData: React.Dispatch<React.SetStateAction<CustomerData>>;
-    resetCustomerData: () => void;
-};
-*/
 interface Props {
     children: ReactNode;
 }
-
-
-//export const CustomerContext = createContext<CustomerContextType | null>(null);
 
 
 export const CustomerContextProvider = ({children}: Props) => {

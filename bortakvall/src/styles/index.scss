@@ -1,3 +1,5 @@
+@use './mixins';
+@use './breakpoints';
 @use './globals';
 
 @use './components/customerDetails';

@@ -45,22 +45,6 @@ export async function getProduct(productId: number) {
     }
 };
 
-/*
-export async function postOrder(
-    userId: number,
-    order: OrderCustomerDetails,
-    ) {
-    try {
-        const response = await apiInstance.post<ApiResponse<OrderCustomerDetails>>(`/users/${userId}/orders`, order);
-
-        return response.data.data;
-    } catch (error: unknown) {
-        console.error("Failed to postOrder:", error);
-
-        throw error;
-    }
-};
-*/
 export async function postOrder(
     userId: number,
     order: OrderCustomerDetails,

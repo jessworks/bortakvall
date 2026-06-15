@@ -1,11 +1,18 @@
+@use '../mixins';
+
+
 .product-list {
     margin-left: 25px;
+    margin-right: 25px;
 
     .product-list-li {
+        display: flex;
+        flex-direction: column;
         margin: 35px 0 45px 0;
 
         .product-list-img {
-            margin-top: 25px;
+            align-self: center;
+            margin-top: 25px;   
         }
 
         .product-list-name {
@@ -18,5 +25,53 @@
             font-size: 1.8rem;
             font-weight: bold;
         }
+    }
+}
+
+@include mixins.respond-to(tablet) {
+    .product-list {
+        .product-list-li {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-list-img {
+            grid-column: 1 / span 2;
+        }
+
+        .product-list-description {
+            grid-column: 3 / span 4;
+            margin-top: 25px;
+            
+            .product-list-btns {
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                margin-top: 40px;
+            }
+
+        }
+    }
+}
+
+@include mixins.respond-to(desktop) {
+    .product-list {
+        .product-list-li {
+            .product-list-btns {
+                display: flex;
+                flex-direction: row;
+                
+                .product-list-open-card {
+                    min-width: 140px;
+                    white-space: nowrap;
+                }
+
+                .product-list-add {
+                    min-width: 180px;
+                    white-space: nowrap;
+                }
+            }
+        }    
     }
 }
