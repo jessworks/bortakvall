@@ -103,6 +103,14 @@ export const OrderForm = () => {
                 onSubmitOrder={handleSubmitOrder} 
             />
 
+            {orderSuccessMessage && (
+                <p className="order-success-message">{orderSuccessMessage}</p>
+            )}
+
+            {orderErrorMessage && (
+                <p className="order-error-message">{orderErrorMessage}</p>
+            )}    
+
             <Link 
                 className="link-as-btn home-link" 
                 to='/'
@@ -110,13 +118,7 @@ export const OrderForm = () => {
                 Fortsätt handla
             </Link>
 
-             {orderSuccessMessage && (
-                <p className="order-success-message">{orderSuccessMessage}</p>
-            )}
-
-            {orderErrorMessage && (
-                <p className="order-error-message">{orderErrorMessage}</p>
-            )}           
+                   
 
         </div>
     )
